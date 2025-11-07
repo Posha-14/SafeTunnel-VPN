@@ -25,7 +25,7 @@ Week 1 – VM and OpenVPN Setup & Verification
 - Connected successfully on my laptop.  
 - Verified the server status log at `/var/log/openvpn-status.log` shows active client.  
 - OpenVPN service confirmed running even after disconnect.  
-- VPN setup and connection successful ✅
+- VPN setup and connection successful 
 
 ### Verification Evidence
 Command used: 
