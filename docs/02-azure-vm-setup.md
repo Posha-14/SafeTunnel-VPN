@@ -1,4 +1,4 @@
-
+Week 1 – VM and   Firewall setup
 # Azure VM Setup
 
 This document describes how the SafeTunnel VM was created and prepared.
@@ -11,7 +11,7 @@ This document describes how the SafeTunnel VM was created and prepared.
 - **Authentication:** SSH username and password
 
 After creation, the VM was assigned a public IP address.  
-This IP address is used to SSH into the server and to access the website with `http://<VM-IP>`.
+This IP address is used to SSH into the server and to access the website with `http://74.162.57.96`.
 
 ## Firewall / Networking
 
