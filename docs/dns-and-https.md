@@ -11,7 +11,7 @@ The following A-records were added in the NameSilo “DNS Records” panel:
 
 
 DNS propagation completed within a few minutes.
-Proof: screenshots/dns-records.png
+
 
 ## Nginx Configuration
 
@@ -49,7 +49,7 @@ server {
 }
 
 
-Proof: screenshots/nginx-https-block.png
+
 
 ## HTTP Redirect Block (Port 80)
 
@@ -68,7 +68,7 @@ server {
 }
 
 
-Proof: screenshots/nginx-http-redirect.png
+
 
 ## Certbot Installation
 
