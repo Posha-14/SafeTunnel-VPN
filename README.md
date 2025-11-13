@@ -5,10 +5,10 @@
 
 ## Project Overview
 
-SafeTunnel VPN is a secure VPN gateway running on an Azure Ubuntu 24.04 IaaS virtual machine.  
-It uses **WireGuard** for the VPN tunnel and **Nginx** to serve a custom HTML website.
+SafeTunnel VPN is a secure VPN gateway hosted on an Azure Ubuntu 24.04 IaaS virtual machine.
+It uses **WireGuard** for VPN connectivity and **Nginx** to serve a custom-built web dashboard.
 
-The website, accessible via the VM public IP (`http://74.162.57.96>`), provides:
+The website, accessible via the VM public IP (`https://safetunnel.icu)`), provides:
 
 - A **dashboard** page with:
   - Active VPN clients
@@ -28,7 +28,9 @@ The documentation in `docs/` explains this setup.
 - **Web Server:** Nginx
 - **VPN:** WireGuard (`wg-quick@wg0`)
 - **Script:** `wg-stats.sh` – exports WireGuard stats to `/var/www/html/status.json`
-- **Access URL:** `http://74.162.57.96>` (no DNS / HTTPS configured)
+- **Domain:** safetunnel.icu (from NameSilo)
+- **Access URL:** `https://safetunnel.icu`
+- **SSL / HTTPS:** Let’s Encrypt (Certbot)
 
 ## Repository Layout
 
@@ -37,22 +39,17 @@ The documentation in `docs/` explains this setup.
   - `02-azure-vm-setup.md` – VM creation and firewall rules
   - `03-wireguard-vpn-setup.md` – WireGuard configuration and testing
   - `05-vpn-status-script.md` – script purpose, usage and sample output
+  - `dns-and-https.md`
 - `scripts/`
   - `wg-stats.sh` – Bash script that generates `status.json`
   - `www`- HTML for the website
 - `screenshots/` – evidence (VM, VPN, website pages, JSON output)
 - `LICENSE` – MIT License
+  
 
 ## Video Explainer
 
 Video link: ** .......**
-
-The video demonstrates:
-
-1. The Azure VM and network configuration
-2. WireGuard running on the server
-3. The Nginx website (dashboard, proposal, status pages)
-4. The `wg-stats.sh` script and the JSON status file
 
 ## License
 
