@@ -14,19 +14,3 @@ Week 1 – VM and OpenVPN Setup & Verification
 
 ---
 
-## OpenVPN Setup and Verification
-
-### Environment
-- **OS:** Ubuntu 24.04 (Azure VM)
-- **Installation Script:** [angristan/openvpn-install](https://github.com/angristan/openvpn-install)
-
-### Configuration Details
-- Client profile generated: `/home/Posha/SafeTunnel-VPN.ovpn`  
-- Connected successfully on my laptop.  
-- Verified the server status log at `/var/log/openvpn-status.log` shows active client.  
-- OpenVPN service confirmed running even after disconnect.  
-- VPN setup and connection successful 
-
-### Verification Evidence
-Command used: 
-sudo tail -n 40 /var/log/openvpn/status.log
