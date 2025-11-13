@@ -9,6 +9,7 @@ This document describes how the SafeTunnel VM was created and prepared.
 - **Image:** Ubuntu Server 24.04 LTS
 - **Size:** Small general-purpose VM
 - **Authentication:** SSH username and password
+- **VM Name:** SafeTunnel
 
 After creation, the VM was assigned a public IP address.  
 This IP address is used to SSH into the server and to access the website with `http://74.162.57.96`.
@@ -21,7 +22,8 @@ The following inbound rules were allowed:
 
 - **SSH:** TCP 22
 - **HTTP:** TCP 80
-- **WireGuard:** UDP 51820 (or the configured WireGuard port)
+- **HTTPS:** 443 
+- **WireGuard:** UDP 51820 
 
 ### UFW on Ubuntu
 
@@ -35,3 +37,7 @@ sudo ufw enable
 
 sudo apt update
 sudo apt install -y nginx
+
+
+
+
