@@ -1,25 +1,25 @@
-1. Domain Setup (NameSilo)
+### Domain Setup (NameSilo)
 
 The domain safetunnel.icu was registered using NameSilo.
 
 The following A-records were added in the NameSilo “DNS Records” panel:
 
-Type	Host	Value	Purpose
-A	@	<YOUR_PUBLIC_IP>	Root domain
-A	www	<YOUR_PUBLIC_IP>	Supports www.safetunnel.icu
+| Type | Host | Value | Purpose |
+|------|------|-------|---------|
+| A    | @    | 74.162.57.96 | Root domain |
+| A    | www  | 74.162.57.96 | Supports www.safetunnel.icu |
 
-A	api (optional)	<YOUR_PUBLIC_IP>	API subdomain
 
 DNS propagation completed within a few minutes.
 Proof: screenshots/dns-records.png
 
-2. Nginx Configuration
+## Nginx Configuration
 
 The Nginx configuration for the domain is stored in:
 
 /etc/nginx/sites-available/safetunnel
 
-2.1 HTTPS Server Block (Port 443)
+# HTTPS Server Block (Port 443)
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
@@ -51,7 +51,7 @@ server {
 
 Proof: screenshots/nginx-https-block.png
 
-3. HTTP Redirect Block (Port 80)
+## HTTP Redirect Block (Port 80)
 
 Certbot created this block to force all http → https traffic:
 
@@ -70,7 +70,7 @@ server {
 
 Proof: screenshots/nginx-http-redirect.png
 
-4. Certbot Installation
+## Certbot Installation
 
 HTTPS was configured using:
 
@@ -92,6 +92,7 @@ To verify certificates:
 
 sudo certbot certificates
 
-Conclusion
+##Conclusion
+
 DNS was successfully configured through NameSilo, and HTTPS was implemented using Certbot. The domain safetunnel.icu now loads securely with valid SSL certificates, and all traffic is correctly redirected from HTTP to HTTPS. This significantly improves reliability, security, and professionalism of the SafeTunnel system.
 
