@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device>
+<title>SafeTunnel — Dashboard</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu>
+  header{display:flex;justify-content:space-between;align-items:c>
+  nav a{color:#a9b7d9;text-decoration:none;margin:0 10px}
+  .wrap{max-width:980px;margin:36px auto;padding:0 16px}
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr>
+  .card{background:#111a2e;border:1px solid #1b2744;border-radius>
+  .btn{background:#3b82f6;border:0;border-radius:12px;padding:12p>
+  .btn[disabled]{opacity:.6;cursor:wait}
+  .mono{font-family:ui-monospace,SFMono-Regular,Consolas,Monaco,m>
+</style>
+</head>
+<body>
+<header>
+  <div><strong>SafeTunnel</strong></div>
+  <nav>
+    <a href="/status">Status</a>
+    <a href="/proposal.html">Proposal / About</a>
+    <a href="/status.json">JSON</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <h1 style="margin:8px 0 20px">VPN Control</h1>
+  <button id="toggleBtn" class="btn">Loading…</button>
+<style>
+#toggleBtn{
+  display:block;
+  margin:40px auto;
+  font-size:22px;
+  padding:16px 40px;
+  border-radius:14px;
+ background:#3b82f6;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  transition:0.2s;
+}
+#toggleBtn:hover{background:#2563eb;}
+</style>
+
+  <h2 style="margin:28px 0 12px">Overview</h2>
+  <div class="cards">
+    <div class="card">
+      <div>Active clients</div>
+      <div id="k_active" class="mono" style="font-size:28px">0</d>
+    </div>
+    <div class="card">
+      <div>Bytes In (MB)</div>
+      <div id="k_in" class="mono" style="font-size:28px">0</div>
+    </div>
+    <div class="card">
+      <div>Bytes Out (MB)</div>
+      <div id="k_out" class="mono" style="font-size:28px">0</div>
+    </div>
+  </div>
+</div>
+
+<script>
+//PUT YOUR REAL API KEY HERE (same as in safetunnel-api.servi>
+const APIKEY = "9caa155ab1c5c9474ca9ff1629076dda";
+
+const btn = document.getElementById('toggleBtn');
+
+async function getState(){
+  try{
+    const r = await fetch('/api/vpn/status', {
+      headers: { 'X-API-Key': APIKEY }
+         });
+    const d = await r.json();
+    btn.textContent = d.active ? 'Disconnect VPN' : 'Connect VPN';
+    btn.dataset.active = d.active ? '1':'0';
+  }catch(e){
+    console.error('status error', e);
+    btn.textContent = 'Connect VPN';
+    btn.dataset.active = '0';
+  }
+}
+
+async function refreshKPI(){
+  try{
+    const r = await fetch('/status.json?ts='+Date.now());
+    const d = await r.json();
+    document.getElementById('k_active').textContent = d.active_cl>
+    document.getElementById('k_in').textContent     = (d.bytes_in>
+    document.getElementById('k_out').textContent    = (d.bytes_ou>
+  }catch(e){
+    console.error('kpi error', e);
+    ['k_active','k_in','k_out'].forEach(id=>document.getElementBy>
+  }
+}
+
+btn.addEventListener('click', async ()=>{
+  const active = btn.dataset.active === '1';
+  btn.disabled = true;
+  btn.textContent = active ? 'Disconnecting…' : 'Connecting…';
+  try{
+    await fetch('/api/vpn/' + (active ? 'stop' : 'start'), {
+      method:'POST',
+      headers: { 'X-API-Key': APIKEY }
+    });
+  }catch(e){
+    console.error('toggle error', e);
+  }finally{
+ await getState();
+    await refreshKPI();
+    btn.disabled = false;
+  }
+});
+
+getState();
+refreshKPI();
+setInterval(refreshKPI, 60000);
+</script>
+</body>
+</html>
