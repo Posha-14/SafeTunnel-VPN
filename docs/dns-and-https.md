@@ -92,7 +92,7 @@ To verify certificates:
 
 sudo certbot certificates
 
-##Conclusion
+## Conclusion
 
 DNS was successfully configured through NameSilo, and HTTPS was implemented using Certbot. The domain safetunnel.icu now loads securely with valid SSL certificates, and all traffic is correctly redirected from HTTP to HTTPS. This significantly improves reliability, security, and professionalism of the SafeTunnel system.
 
