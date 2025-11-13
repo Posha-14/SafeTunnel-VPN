@@ -18,7 +18,7 @@ The website, accessible via the VM public IP (`http://74.162.57.96>`), provides:
 - A **JSON** page that shows the raw JSON output from a custom Bash script
 
 The project originally started with OpenVPN using the `angristan/openvpn-install` script.  
-Due to configuration difficulty and time constraints, it was migrated to WireGuard, which is simpler and lighter.  
+Due to configuration difficulty, it was migrated to WireGuard, which is simpler and lighter.  
 The documentation in `docs/` explains this setup.
 
 ## Server Stack
@@ -30,8 +30,6 @@ The documentation in `docs/` explains this setup.
 - **Script:** `wg-stats.sh` – exports WireGuard stats to `/var/www/html/status.json`
 - **Access URL:** `http://74.162.57.96>` (no DNS / HTTPS configured)
 
-DNS and HTTPS are described as future improvements.
-
 ## Repository Layout
 
 - `docs/` – step-by-step documentation
@@ -41,12 +39,13 @@ DNS and HTTPS are described as future improvements.
   - `05-vpn-status-script.md` – script purpose, usage and sample output
 - `scripts/`
   - `wg-stats.sh` – Bash script that generates `status.json`
+  - `www`- HTML for the website
 - `screenshots/` – evidence (VM, VPN, website pages, JSON output)
 - `LICENSE` – MIT License
 
 ## Video Explainer
 
-Video link: **[ADD VIDEO LINK HERE]**
+Video link: ** .......**
 
 The video demonstrates:
 
