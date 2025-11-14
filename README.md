@@ -49,7 +49,7 @@ The documentation in `docs/` explains this setup.
 
 ## Video Explainer
 
-Video link: ** .......**
+Video link: ** https://drive.google.com/file/d/14sK48udGIo_8FIG_m0WYcJxLBGM6QgL9/view?usp=drive_link **
 
 ## License
 
